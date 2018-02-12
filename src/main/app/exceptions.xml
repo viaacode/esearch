@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/slack http://www.mulesoft.org/schema/mule/sl
     <choice-exception-strategy name="globalChoice_Exception_Strategy">
         <catch-exception-strategy doc:name="Catch Exception Strategy">
             <set-variable variableName="error_message" value="Failed to process eSearch log message" doc:name="Set error_message"/>
-            <set-variable variableName="error_cause" value="#[exception.toString() + &quot;\n\n&quot; + message.payloadAs(java.lang.String)]" doc:name="Variable - error_cause"/>
+            <set-variable variableName="error_cause" value="#[exception.toString() + &quot;\n\n&quot; + exception.getCause().toString() + &quot;\n\n&quot; + message.payloadAs(java.lang.String)]" doc:name="Variable - error_cause"/>
             <logger message="eSEARCH ERROR MESSAGE : #[flowVars.error_message] - ERROR CAUSE : #[flowVars.error_cause]" level="INFO" doc:name="error_message and error_cause"/>
             <set-variable variableName="slack_message" value="#['*eSEARCH EXCEPTION :* ' + flowVars.error_message + &quot;\n\n&quot; + '*CAUSE :* ' + flowVars.error_cause]" doc:name="Set slack_message"/>
             <logger message="SLACK MESSAGE : #[flowVars.slack_message]" level="INFO" doc:name="slack_message"/>
