@@ -28,7 +28,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
     </configuration>
          <http:request-config name="Elastic_Search" host="${elastic.host}" port="${elastic.port}" basePath="${elastic.path}" doc:name="HTTP Request Configuration"/>  
     <http:proxy name="Proxy_Configuration" host="proxy.do.viaa.be" port="80" doc:name="Proxy Configuration"/>
-        <slack:token-config name="Slack__Token_Configuration" accessToken="${slack.token}" doc:name="Slack: Token Configuration">
+        <slack:token-config name="Slack__Token_Configuration" accessToken="${slack.token}" doc:name="Slack: Token Configuration" httpClientType="JERSEY">
         <reconnect/>
     </slack:token-config>
 </mule>
