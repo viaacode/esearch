@@ -11,7 +11,7 @@
 
     <Appenders>
         <RollingFile name="file" fileName="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}esearch.log" 
-                 filePattern="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}esearch-%i.log">
+                 filePattern="${sys:mule.home}${sys:file.separator}logs${sys:file.separator}esearch.log.%i">
             <PatternLayout pattern="%d [%t] %-5p %c - %m%n" />
             <SizeBasedTriggeringPolicy size="10 MB" />
             <DefaultRolloverStrategy max="10"/>
